@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+    clinic-app:
+        build: 
+            context: ./
+            dockerfile: Dockerfile
+        ports: 
+            - "3081:3081"
+        container_name: clinic-app
+        volumes: 
+            - ./:/usr/app
+        environment: 
+            NODE_ENV: development
+            DB_CONNECT: mongodb+srv://linapp_db_admin:haters12@cluster0.xd9zf.mongodb.net/lineapp-db?retryWrites=true&w=majority
+            TOKEN_SECRET: hatersdb12!
+            TWILIO_ACCOUNT_SID: ACcd1cbff0cf4f625354cd85841d9a2a0c
+            TWILIO_AUTH_TOKEN: 2fc73f21719d4604bf60ad42bc8c411d
+            TWILIO_PHONE_NUMBER: +19179245093
+            SMS_TO_PHONE_NUMBER: +6582231967
+            TIMEZONE: Asia/Singapore
+            EMAIL_HOST: smtp.gmail.com
+            EMAIL_PORT: 587
+            EMAIL_SERVICE: gmail
+            EMAIL_USER: zappy202004@gmail.com
+            EMAIL_PASSWORD: iZrwbGCVDhTr4s-uQJhg
+            NODE_PORT: 3081
+        links: 
+            - mongodb
+    mongodb:
+        image: mongo:4.0.4
+        environment:
+            MONGO_INIDB_ROOT_USERNAME: mongoadmin
+            MONGO_INIDB_ROOT_PASSWORD: sercret
+        volumes:
+            - ./db-data/:/data/db
+        ports:
+            - 28017:27017
+        restart: always
