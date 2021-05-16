@@ -1,0 +1,11 @@
+{
+  "name": "clinic-app-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Vincent Pacul",
+  "license": "ISC"
+}
