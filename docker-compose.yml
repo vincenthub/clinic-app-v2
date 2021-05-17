@@ -2,15 +2,17 @@ version: "3.7"
 
 services:
     clinic-app:
-        build: 
+        stdin_open: true
+        build:
             context: ./
             dockerfile: Dockerfile
-        ports: 
+        ports:
             - "3081:3081"
         container_name: clinic-app
-        volumes: 
+        volumes:
+            - /usr/app/node_modules
             - ./:/usr/app
-        environment: 
+        environment:
             NODE_ENV: development
             DB_CONNECT: mongodb+srv://linapp_db_admin:haters12@cluster0.xd9zf.mongodb.net/lineapp-db?retryWrites=true&w=majority
             TOKEN_SECRET: hatersdb12!
@@ -25,7 +27,7 @@ services:
             EMAIL_USER: zappy202004@gmail.com
             EMAIL_PASSWORD: iZrwbGCVDhTr4s-uQJhg
             NODE_PORT: 3081
-        links: 
+        links:
             - mongodb
     mongodb:
         image: mongo:4.0.4
