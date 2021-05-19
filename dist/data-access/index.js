@@ -17,7 +17,7 @@ const mongodb_1 = __importDefault(require("mongodb"));
 const user_db_1 = __importDefault(require("./user-db"));
 const MongoClient = mongodb_1.default.MongoClient;
 const { DB_URL, DB_NAME, } = process.env;
-const client = new MongoClient(DB_URL, {
+const client = new MongoClient('mongodb://mongodb:27017', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -25,7 +25,7 @@ const makeDb = () => __awaiter(void 0, void 0, void 0, function* () {
     if (!client.isConnected()) {
         yield client.connect();
     }
-    return client.db(DB_NAME);
+    return client.db("clinicUser");
 });
 exports.makeDb = makeDb;
 const userDb = user_db_1.default({ makeDb });
