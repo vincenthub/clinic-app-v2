@@ -8,7 +8,7 @@ const {
     DB_NAME,
   } = process.env;
 
-const client = new MongoClient('mongodb://mongodb:27017', { 
+const client = new MongoClient(DB_URL, { 
     useNewUrlParser: true,
     useUnifiedTopology: true 
 })
@@ -17,7 +17,7 @@ const makeDb = async() => {
     if(!client.isConnected()){
         await client.connect()
     }
-    return client.db("clinicUser")
+    return client.db(DB_NAME)
 }
 
 const userDb =  makeUserDb({ makeDb })

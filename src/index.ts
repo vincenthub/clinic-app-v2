@@ -13,9 +13,9 @@ const apiRoot = process.env.API_ROOT
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
+console.log(apiRoot)
 //add routes here/app/v1
-app.post('/api/v1/user', makeCallback(createNewUser))
+app.post(`${apiRoot}/user`, makeCallback(createNewUser))
 
 // listen for requests
 app.listen(port, () => {

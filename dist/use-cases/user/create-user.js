@@ -37,7 +37,7 @@ function makeCreateUser({ userDb }) {
                 profession: user.getProfession(),
                 address: user.getAddress(),
                 socialLogins: user.getSocialLogins(),
-                loginAttepmts: user.getLoginAttempts(),
+                loginAttempts: user.getLoginAttempts(),
                 isVerifiedEmail: user.isVerifiedEmail(),
                 lastLogin: user.getLastLoginDate(),
                 createStatus: user.getCreateStatus(),

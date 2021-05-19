@@ -27,6 +27,9 @@ services:
             EMAIL_USER: zappy202004@gmail.com
             EMAIL_PASSWORD: iZrwbGCVDhTr4s-uQJhg
             NODE_PORT: 3081
+            DB_URL: mongodb://mongodb:27017
+            DB_NAME: clinicUser
+            API_ROOT: /api/v1
         links:
             - mongodb
     mongodb:
