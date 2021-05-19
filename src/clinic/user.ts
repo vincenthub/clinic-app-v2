@@ -1,4 +1,4 @@
-export default function buildCreateUser ({ Id }) {
+export default function buildCreateUser ({ Id, md5 }) {
     return function createUser ( {
         id = Id.makeId(),
         email,
@@ -23,11 +23,34 @@ export default function buildCreateUser ({ Id }) {
         createdByUserId,
         createdOn = Date.now(),
         modifiedOn = Date.now()
-    } = {}) {
+    } = { 
+        email: String,
+        password: String,
+        firstName: String,
+        middleName: String,
+        lastName: String,
+        contactNumber: String,
+        birthDate: String,
+        image: String,
+        token: String,
+        tokenExpireDate: String,
+        userPrefix: String,
+        userSuffix: String,
+        profession: String,
+        address: Object,
+        socialLogins: Array,
+        loginAttempts: String,
+        verifiedEmail: String,
+        lastLoginDate: String,
+        createdByUserId: String
+    }) {
         //TODO:: Validator
+
+        let hash
 
         return Object.freeze({
             getId: () => id,
+            getHash: () => hash || (hash = makeHash()),
             getEmail: () => email,
             getPassword: () => password,
             getFirstName: () => firstName,
@@ -51,5 +74,11 @@ export default function buildCreateUser ({ Id }) {
             getCreatedOn: () => createdOn,
             getModifiedOn: () => modifiedOn
         })
+        
+        function makeHash () {
+            return md5(
+                email
+            )
+        }
     }
 }

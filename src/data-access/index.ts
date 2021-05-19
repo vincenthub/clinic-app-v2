@@ -1,20 +1,18 @@
-const mongodb = require('mongodb')
-const makeUserDb = require('./user-db')
+import mongodb from 'mongodb'
+import makeUserDb from './user-db'
 
 const MongoClient = mongodb.MongoClient
 const url = process.env.DB_URL
 const dbName = process.env.DB_NAME
 const client = new MongoClient(url, { useNewUrlParser: true })
 
-export async function makeDb () {
+const makeDb = async() => {
     if(!client.isConnected()){
         await client.connect()
     }
     return client.db(dbName)
 }
 
-const clinicDb = Object.freeze({
-    userDb: makeUserDb({ makeDb})
-}) 
+const userDb =  makeUserDb({ makeDb })
 
-export default clinicDb
+export { userDb, makeDb }
