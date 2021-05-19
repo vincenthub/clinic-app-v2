@@ -2,15 +2,22 @@ import mongodb from 'mongodb'
 import makeUserDb from './user-db'
 
 const MongoClient = mongodb.MongoClient
-const url = process.env.DB_URL
-const dbName = process.env.DB_NAME
-const client = new MongoClient(url, { useNewUrlParser: true })
+
+const {
+    DB_URL,
+    DB_NAME,
+  } = process.env;
+
+const client = new MongoClient('mongodb://mongodb:27017', { 
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+})
 
 const makeDb = async() => {
     if(!client.isConnected()){
         await client.connect()
     }
-    return client.db(dbName)
+    return client.db("clinicUser")
 }
 
 const userDb =  makeUserDb({ makeDb })

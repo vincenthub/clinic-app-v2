@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dock-up": "docker-compose up -d --build --force-recreate --renew-anon-volumes",
     "test": "jest",
     "start": "tsc && node ./src/index.ts",
     "run-local": "tsc && nodemon ./src/index.ts"

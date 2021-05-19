@@ -31,11 +31,9 @@ services:
             - mongodb
     mongodb:
         image: mongo:4.0.4
-        environment:
-            MONGO_INIDB_ROOT_USERNAME: mongoadmin
-            MONGO_INIDB_ROOT_PASSWORD: sercret
+        container_name: mongo-db
         volumes:
-            - ./db-data/:/data/db
+            - ./db-data/:/data/db   
         ports:
-            - 28017:27017
+            - 27017:27017
         restart: always

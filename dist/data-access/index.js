@@ -16,14 +16,16 @@ exports.makeDb = exports.userDb = void 0;
 const mongodb_1 = __importDefault(require("mongodb"));
 const user_db_1 = __importDefault(require("./user-db"));
 const MongoClient = mongodb_1.default.MongoClient;
-const url = process.env.DB_URL;
-const dbName = process.env.DB_NAME;
-const client = new MongoClient(url, { useNewUrlParser: true });
+const { DB_URL, DB_NAME, } = process.env;
+const client = new MongoClient(DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 const makeDb = () => __awaiter(void 0, void 0, void 0, function* () {
     if (!client.isConnected()) {
         yield client.connect();
     }
-    return client.db(dbName);
+    return client.db(DB_NAME);
 });
 exports.makeDb = makeDb;
 const userDb = user_db_1.default({ makeDb });
