@@ -1,4 +1,4 @@
-const cuid = require('cuid')
+import cuid from 'cuid'
 
 const Id = Object.freeze({
     makeId: cuid,
