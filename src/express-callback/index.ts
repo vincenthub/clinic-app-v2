@@ -13,7 +13,8 @@ export default function makeExpressCallback (controller) {
           'User-Agent': req.get('User-Agent')
         }
       }
-      controller(httpRequest)
+      
+      controller(httpRequest, req)
         .then(httpResponse => {
           if (httpResponse.headers) {
             res.set(httpResponse.headers)

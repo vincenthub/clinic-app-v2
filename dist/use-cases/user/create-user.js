@@ -15,7 +15,7 @@ function makeCreateUser({ userDb }) {
     return function addNewUser(userInfo) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = clinic_1.makeCreateNewUser(userInfo);
-            const exists = yield userDb.findByHash({ hash: user.getHash() });
+            const exists = yield userDb.findByEmailAddress({ hash: user.getEmail() });
             if (exists) {
                 return exists;
             }

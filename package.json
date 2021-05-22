@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dock-up": "docker-compose up -d --build --force-recreate --renew-anon-volumes",
+    "del-imgs-containers": "docker ps -q && docker ps -a -q && docker images -q",
     "test": "jest",
     "start": "tsc && node ./src/index.ts",
     "run-local": "tsc && nodemon ./src/index.ts"

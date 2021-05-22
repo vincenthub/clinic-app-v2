@@ -16,7 +16,7 @@ export default function buildCreateUser ({ Id, md5 }) {
         profession,
         address,
         socialLogins,
-        loginAttempts,
+        loginAttempts = 0,
         verifiedEmail,
         lastLoginDate,
         createStatus = 'active',
@@ -39,13 +39,14 @@ export default function buildCreateUser ({ Id, md5 }) {
         profession: String,
         address: Object,
         socialLogins: Array,
-        loginAttempts: String,
+        loginAttempts: Number,
         verifiedEmail: String,
         lastLoginDate: String,
-        createdByUserId: String
+        createdByUserId: String,
+        createdOn: String,
+        modifiedOn: String
     }) {
-        //TODO:: Validator
-
+      
         let hash
 
         return Object.freeze({
