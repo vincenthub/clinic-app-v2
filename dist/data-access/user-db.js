@@ -27,7 +27,7 @@ const Id_1 = __importDefault(require("../Id"));
 function makeUsersDb({ makeDb }) {
     return Object.freeze({
         findUserById,
-        findByHash,
+        findByEmailAddress,
         insert
     });
     function findUserById({ id: _id }) {
@@ -42,16 +42,16 @@ function makeUsersDb({ makeDb }) {
             return Object.assign({ id }, info);
         });
     }
-    function findByHash(user) {
+    function findByEmailAddress({ email }) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield makeDb();
-            const result = yield db.collection('users').find({ hash: user.hash });
+            const result = yield db.collection('users').find({ email });
             const found = yield result.toArray();
             if (found.length === 0) {
                 return null;
             }
-            const _a = found[0], { _id: id } = _a, insertedInfo = __rest(_a, ["_id"]);
-            return Object.assign({ id }, insertedInfo);
+            const userInfo = __rest(found[0], []);
+            return Object.assign({}, userInfo);
         });
     }
     function insert(_a) {

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function buildCreateUser({ Id, md5 }) {
-    return function createUser({ id = Id.makeId(), email, password, firstName, middleName, lastName, contactNumber, birthDate, image, token, tokenExpireDate, userPrefix, userSuffix, profession, address, socialLogins, loginAttempts, verifiedEmail, lastLoginDate, createStatus = 'active', createdByUserId, createdOn = Date.now(), modifiedOn = Date.now() } = {
+    return function createUser({ id = Id.makeId(), email, password, firstName, middleName, lastName, contactNumber, birthDate, image, token, tokenExpireDate, userPrefix, userSuffix, profession, address, socialLogins, loginAttempts = 0, verifiedEmail, lastLoginDate, createStatus = 'active', createdByUserId, createdOn = Date.now(), modifiedOn = Date.now() } = {
         email: String,
         password: String,
         firstName: String,
@@ -17,12 +17,13 @@ function buildCreateUser({ Id, md5 }) {
         profession: String,
         address: Object,
         socialLogins: Array,
-        loginAttempts: String,
+        loginAttempts: Number,
         verifiedEmail: String,
         lastLoginDate: String,
-        createdByUserId: String
+        createdByUserId: String,
+        createdOn: String,
+        modifiedOn: String
     }) {
-        //TODO:: Validator
         let hash;
         return Object.freeze({
             getId: () => id,

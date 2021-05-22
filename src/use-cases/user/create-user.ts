@@ -6,7 +6,7 @@ export function makeCreateUser({ userDb }) {
    
     const user = makeCreateNewUser(userInfo)
     
-    const exists = await userDb.findByHash({ hash: user.getHash() })
+    const exists = await userDb.findByEmailAddress({ hash: user.getEmail() })
 
     if (exists) {
       return exists

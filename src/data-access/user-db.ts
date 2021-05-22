@@ -4,7 +4,7 @@ export default function makeUsersDb ({ makeDb }) {
 
     return Object.freeze({
         findUserById,
-        findByHash,
+        findByEmailAddress,
         insert
     })
 
@@ -19,15 +19,15 @@ export default function makeUsersDb ({ makeDb }) {
          return { id, ...info }
     }
 
-    async function findByHash (user) {
+    async function findByEmailAddress ({ email }) {
         const db = await makeDb()
-        const result = await db.collection('users').find({ hash: user.hash })
+        const result = await db.collection('users').find({ email })
         const found = await result.toArray()
         if (found.length === 0) {
           return null
         }
-        const { _id: id, ...insertedInfo } = found[0]
-        return { id, ...insertedInfo }
+        const { ...userInfo } = found[0]
+        return { ...userInfo }
     }
 
     async function insert ({ id: _id = Id.makeId(), ...userInfo }) {

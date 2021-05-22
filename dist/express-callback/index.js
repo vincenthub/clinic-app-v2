@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function makeExpressCallback(controller) {
+function makeExpressCallback(controller, validationResult) {
     return (req, res) => {
         const httpRequest = {
             body: req.body,
@@ -15,6 +15,10 @@ function makeExpressCallback(controller) {
                 'User-Agent': req.get('User-Agent')
             }
         };
+        //TODO:: Validator
+        const validationErrors = validationResult(req);
+        if (!validationErrors.isEmpty())
+            throw new Error(validationErrors.array());
         controller(httpRequest)
             .then(httpResponse => {
             if (httpResponse.headers) {

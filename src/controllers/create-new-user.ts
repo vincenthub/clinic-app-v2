@@ -1,6 +1,18 @@
-export default function makeCreateNewUser ({ addNewUser }) {
-    return async function createNewUser (httpRequest ) {
+export default function makeCreateNewUser ({ addNewUser, validationResult }) {
+    return async function createNewUser (httpRequest, req) {
       try {
+
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+          return {
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            statusCode: 400,
+            body: errors
+          }
+        }
+
         const { ...userInfo } = httpRequest.body
       
         const newUser = await addNewUser({

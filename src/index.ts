@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 
 import { createNewUser }  from './controllers'
 import makeCallback from './express-callback'
+import { userFieldValidation } from './validationChecks/userInfoCheck'
 
 dotenv.config()
 
@@ -14,8 +15,9 @@ const apiRoot = process.env.API_ROOT
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 console.log(apiRoot)
+
 //add routes here/app/v1
-app.post(`${apiRoot}/user`, makeCallback(createNewUser))
+app.post(`${apiRoot}/user`, userFieldValidation, makeCallback(createNewUser))
 
 // listen for requests
 app.listen(port, () => {
