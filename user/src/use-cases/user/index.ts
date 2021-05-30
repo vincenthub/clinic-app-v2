@@ -7,4 +7,6 @@ const userService = Object.freeze({
     addNewUser
 })
 
+export default userService
+
 export { addNewUser }
