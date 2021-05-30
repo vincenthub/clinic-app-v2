@@ -1,0 +1,1 @@
+{"version":3,"file":"get-all-clinic.js","sourceRoot":"","sources":["../../../src/use-cases/get-all-clinic.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,SAAgB,gBAAgB,CAAC,EAAE,QAAQ,EAAE;IACzC,OAAO,SAAe,aAAa;;YACjC,OAAO,QAAQ,CAAC,aAAa,CAAC,EAAE,CAAC,CAAA;QACnC,CAAC;KAAA,CAAA;AACH,CAAC;AAJH,4CAIG"}

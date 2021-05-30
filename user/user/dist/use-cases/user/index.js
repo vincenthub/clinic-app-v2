@@ -8,4 +8,5 @@ exports.addNewUser = addNewUser;
 const userService = Object.freeze({
     addNewUser
 });
+exports.default = userService;
 //# sourceMappingURL=index.js.map
