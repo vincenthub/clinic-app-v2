@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  notifications-service-dev:
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: docker/application/Dockerfile.dev
+    ports:
+      - "3003:3081"
+    container_name: notifications-service-dev
+    volumes:
+      - /notifications-service-dev/node_modules
+      - ./:/notifications-service-dev
+    environment:
+      - NODE_PORT=3003
+      - DB_URL=mongodb://mongo
+      - DB_NAME=noticationsdb-dev
+    links:
+      - mongo
+    restart: on-failure
+
+  mongo:
+    image: mongo:4.0.4
+    volumes:
+      - ./docker/mongodb-dev/db-data/:/data/db
+    ports:
+      - 27017:27017
+    restart: always
+
+  mongo-express-dev:
+    image: mongo-express:0.54.0
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+    ports:
+      - "5001:8081"
+    links:
+      - mongo
+    depends_on:
+      - mongo
