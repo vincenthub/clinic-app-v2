@@ -23,7 +23,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Id_1 = __importDefault(require("../Id"));
+const Id_1 = __importDefault(require("../tools/Id"));
 function makeClinicsDb({ makeDb }) {
     return Object.freeze({
         findClinicById,

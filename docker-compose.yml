@@ -7,7 +7,7 @@ services:
             context: ./user
             dockerfile: Dockerfile
         ports:
-            - "3081:3081"
+            - "3001:3081"
         container_name: user-service
         volumes:
             - /user-service/node_modules
@@ -38,7 +38,7 @@ services:
             context: ./clinic
             dockerfile: Dockerfile
         ports:
-            - "3082:3081"
+            - "3002:3081"
         container_name: clinic-service
         volumes:
             - /clinic-service/node_modules
@@ -72,7 +72,7 @@ services:
             - 27017:27017
         restart: always
     nginx:
-        image: nginx:latest
+        image: nginx:1.21.0
         ports:
             - "8080:8080"
         volumes:

@@ -21,5 +21,5 @@ app.post(`${apiRoot}/user`, userFieldValidation, makeCallback(createNewUser))
 
 // listen for requests
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`)
+    console.log(`User service is listening on port ${port}`)
 })

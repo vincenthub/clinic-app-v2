@@ -1,4 +1,4 @@
-import Id from '../Id'
+import Id from '../tools/Id'
 
 export default function makeClinicsDb ({ makeDb }) {
 

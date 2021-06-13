@@ -1,8 +1,8 @@
 import crypto from 'crypto'
 import Id from '../Id'
-import buidlMakeCreateUser from './user'
+import buildlMakeCreateUser from './user'
 
-const makeCreateNewUser = buidlMakeCreateUser({ Id, md5 }) 
+const makeCreateNewUser = buildlMakeCreateUser({ Id, md5 }) 
 
 export { 
     makeCreateNewUser 

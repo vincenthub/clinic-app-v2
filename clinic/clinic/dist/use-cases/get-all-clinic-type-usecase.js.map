@@ -1,0 +1,1 @@
+{"version":3,"file":"get-all-clinic-type-usecase.js","sourceRoot":"","sources":["../../../src/use-cases/get-all-clinic-type-usecase.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,SAAgB,oBAAoB,CAAC,EAAE,YAAY,EAAE;IACnD,OAAO,SAAe,iBAAiB;;YACrC,OAAO,YAAY,CAAC,iBAAiB,CAAC,EAAE,CAAC,CAAA;QAC3C,CAAC;KAAA,CAAA;AACH,CAAC;AAJD,oDAIC"}
