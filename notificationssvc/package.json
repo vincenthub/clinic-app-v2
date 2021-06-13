@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "tsc && nodemon ./src/index.ts"
+    "dev": "tsc && nodemon ./src/index.ts",
+    "run-local": "tsc && nodemon ./src/index.ts"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

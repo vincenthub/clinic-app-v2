@@ -2,11 +2,12 @@ FROM node:alpine
 
 WORKDIR /notifications-service
 
-COPY package.json .
+COPY ./notificationssvc/package.json .
 
 RUN npm install
 
-COPY . .
+COPY ./notificationssvc/src ./src
+COPY ./notificationssvc/tsconfig.json .
 
 EXPOSE 3081
 

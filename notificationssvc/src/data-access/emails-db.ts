@@ -1,4 +1,4 @@
-import Id from '../tools/Id'
+import Id from '../tools/id'
 
 export default function makeEmailsDb ( { database }) {
 

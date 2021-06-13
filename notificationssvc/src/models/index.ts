@@ -1,4 +1,4 @@
-import Id from '../tools/Id'
+import Id from '../tools/id'
 import makeEmailModel from './email-model'
 import makeSMSModel from "./sms-model";
 

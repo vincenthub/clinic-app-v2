@@ -56,8 +56,8 @@ services:
     notifications-service:
         stdin_open: true
         build:
-            context: ./notificationssvc
-            dockerfile: Dockerfile
+            context: .
+            dockerfile: ./notificationssvc/docker/application/Dockerfile
         ports:
             - "3003:3081"
         container_name: notifications-service
@@ -75,7 +75,7 @@ services:
         image: mongo:4.0.4
         container_name: mongo-db
         volumes:
-            - ./db-data/:/data/db
+            - ./docker/mongodb/db-data/:/data/db
         ports:
             - 27017:27017
         restart: always
@@ -84,7 +84,7 @@ services:
         ports:
             - "8080:8080"
         volumes:
-            - ./default.conf:/etc/nginx/conf.d/default.conf
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
         restart: on-failure
         depends_on:
             - user-service

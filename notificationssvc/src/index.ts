@@ -1,6 +1,11 @@
 import express from 'express'
+// const app = express()
+// app.use((req,res,next) => {
+//     return res.status(200).json()
+// });
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
+import makeCallback from './tools/express-callback'
 import {
     createEmailController,
     createSMSController,
@@ -9,7 +14,7 @@ import {
     smsValidation,
     emailValidation,
 } from './tools/validations'
-import makeCallback from './tools/express-callback'
+
 
 dotenv.config()
 

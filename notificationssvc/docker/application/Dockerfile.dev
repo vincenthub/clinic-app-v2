@@ -6,8 +6,9 @@ COPY package.json .
 
 RUN npm install
 
-COPY . .
+COPY ./src ./src
+COPY tsconfig.json .
 
-EXPOSE 3081
+EXPOSE 3003
 
 CMD ["npm", "run", "dev"]
