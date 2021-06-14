@@ -20,6 +20,6 @@ console.log(apiRoot);
 app.post(`${apiRoot}/user`, userInfoCheck_1.userFieldValidation, express_callback_1.default(controllers_1.createNewUser));
 // listen for requests
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+    console.log(`User service is listening on port ${port}`);
 });
 //# sourceMappingURL=index.js.map

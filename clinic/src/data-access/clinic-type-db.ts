@@ -1,5 +1,3 @@
-import Id from '../Id'
-
 export default function makeClinicTypeDb ({ makeDb }) {
 
     return Object.freeze({

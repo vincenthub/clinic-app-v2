@@ -1,19 +1,21 @@
 //use-cases
-import { addNewClinic, addNewClinicType, getAllClinics, getAllClinicTypes } from '../use-cases'
+import { 
+    addNewClinicUseCase, 
+    addNewClinicTypeUseCase, 
+    getAllClinicsUseCase, 
+    getAllClinicTypesUseCase 
+} from '../use-cases'
 
 //make controllers
-import makeCreateClinic from './create-new-clinic'
-import makeCreateClinicType from './create-new-clinic-type'
-import makeGetAllClinicTypes from './get-all-clinic-type'
-import makeGetAllClinics from './get-all-clinic'
-
-//express-validator
-import { validationResult } from 'express-validator'
+import makeCreateClinic from './create-new-clinic-controller'
+import makeCreateClinicType from './create-new-clinic-type-controller'
+import makeGetAllClinicTypes from './get-all-clinic-type-controller'
+import makeGetAllClinics from './get-all-clinic-controller'
 
 //clinic contollers
-const createNewClinic = makeCreateClinic({ addNewClinic, validationResult })
-const createNewClinicType = makeCreateClinicType({ addNewClinicType, validationResult })
-const getAllClinicType = makeGetAllClinicTypes({ getAllClinicTypes })
-const getAllClinic = makeGetAllClinics({ getAllClinics })
+const createNewClinicController = makeCreateClinic({ addNewClinicUseCase })
+const createNewClinicTypeController = makeCreateClinicType({ addNewClinicTypeUseCase })
+const getAllClinicTypeController = makeGetAllClinicTypes({ getAllClinicTypesUseCase })
+const getAllClinicController = makeGetAllClinics({ getAllClinicsUseCase })
 
-export { createNewClinic, getAllClinic, createNewClinicType, getAllClinicType }
+export { createNewClinicController, createNewClinicTypeController, getAllClinicTypeController, getAllClinicController }
