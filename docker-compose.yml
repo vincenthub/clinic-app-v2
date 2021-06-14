@@ -68,6 +68,10 @@ services:
             - NODE_PORT=3003
             - DB_URL=mongodb://mongodb:27017
             - DB_NAME=notificationsdb
+            - TWILIO_ACCOUNT_SID=ACcd1cbff0cf4f625354cd85841d9a2a0c
+            - TWILIO_AUTH_TOKEN=2fc73f21719d4604bf60ad42bc8c411d
+            - TWILIO_PHONE_NUMBER=+19179245093
+            - SMS_TO_PHONE_NUMBER=+6582231967
         links:
             - mongodb
         restart: on-failure

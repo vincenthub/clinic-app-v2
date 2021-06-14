@@ -1,4 +1,4 @@
-export default function makeCreateSMSController ({ createSMSUseCase }) {
+export default function makeCreateSMSController ({ createSMSUseCase, sendSMSUseCase }) {
     return async function createSMSController ( httpRequest, statusCodes ) {
         try {
 
@@ -6,13 +6,15 @@ export default function makeCreateSMSController ({ createSMSUseCase }) {
 
             const newSMS = await createSMSUseCase({ ...smsInfo })
 
+            const sendSMS = await sendSMSUseCase( {id: newSMS.id } )
+
             return {
                 headers: {
                     'Content-Type': 'application/json',
                     'Last-Modified': new Date(newSMS.modifiedOn).toUTCString()
                 },
                 statusCode: statusCodes.CREATED,
-                body: { newSMS }
+                body: { sendSMS }
             }
 
         } catch (e) {

@@ -1,8 +1,8 @@
-import {smsModel} from "../models";
+import { smsModel } from "../models";
 export default function makeCreateSMSUseCase({ smsDb }) {
     return async function createSMSUseCase( smsInfo ) {
         const sms = smsModel(smsInfo)
-        return smsDb.insert({
+        const insert = smsDb.insert({
             contactNumber: sms.getContactNumber(),
             message: sms.getMessage(),
             sendOn: sms.getSendOn(),
@@ -10,5 +10,6 @@ export default function makeCreateSMSUseCase({ smsDb }) {
             createdOn: Date.now(),
             modifiedOn: Date.now()
         })
+        return insert
     }
 }

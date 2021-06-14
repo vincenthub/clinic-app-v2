@@ -15,7 +15,11 @@ services:
     environment:
       - NODE_PORT=3003
       - DB_URL=mongodb://mongo
-      - DB_NAME=noticationsdb-dev
+      - DB_NAME=notificationsdb-dev
+      - TWILIO_ACCOUNT_SID=ACcd1cbff0cf4f625354cd85841d9a2a0c
+      - TWILIO_AUTH_TOKEN=2fc73f21719d4604bf60ad42bc8c411d
+      - TWILIO_PHONE_NUMBER=+19179245093
+      - SMS_TO_PHONE_NUMBER=+6582231967
     links:
       - mongo
     restart: on-failure
@@ -28,14 +32,14 @@ services:
       - 27017:27017
     restart: always
 
-#  mongo-express-dev:
-#    image: mongo-express:0.54.0
-#    environment:
-#      - ME_CONFIG_MONGODB_SERVER=mongo
-#    ports:
-#      - "5001:8081"
-#    restart: always
-#    links:
-#      - mongo
-#    depends_on:
-#      - mongo
+  mongo-express-dev:
+    image: mongo-express:0.54.0
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+    ports:
+      - "5001:8081"
+    restart: always
+    links:
+      - mongo
+    depends_on:
+      - mongo
