@@ -1,13 +1,12 @@
-import {smsModel} from "../models";
-export default function makeSendSMSUseCase({ smsDb, smsClient }) {
+export default function makeSendSMSUseCase({ smsDb, sendSMS }) {
     return async function sendSMSUseCase({ id } = { id: String }) {
         const smsInfo = await smsDb.findById({id})
         if (smsInfo === null) {
-            throw new Error('SMS information not found!')
+            throw new Error('sms_args_is_empty')
         }
         if (smsInfo.sentOn === null) {
             try {
-                await smsClient({to: smsInfo.contactNumber, body: smsInfo.message})
+                await sendSMS({to: smsInfo.contactNumber, body: smsInfo.message})
                 await smsDb.updateSentOnTimestamp( {id: smsInfo.id} )
                 return await smsDb.findById({id: smsInfo.id})
             } catch (error) {

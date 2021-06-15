@@ -20,6 +20,11 @@ services:
       - TWILIO_AUTH_TOKEN=2fc73f21719d4604bf60ad42bc8c411d
       - TWILIO_PHONE_NUMBER=+19179245093
       - SMS_TO_PHONE_NUMBER=+6582231967
+      - EMAIL_HOST=smtp.gmail.com
+      - EMAIL_PORT=587
+      - EMAIL_SERVICE= gmail
+      - EMAIL_USER=zappy202004@gmail.com
+      - EMAIL_PASSWORD=iZrwbGCVDhTr4s-uQJhg
     links:
       - mongo
     restart: on-failure

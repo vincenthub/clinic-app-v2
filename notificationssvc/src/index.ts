@@ -19,8 +19,8 @@ const app = express()
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-app.post('/notification/sendSMS', smsValidation, makeCallback(createSMSController))
-app.post('/notification/sendEmail', emailValidation, makeCallback(createEmailController))
+app.post('/sendSMS', smsValidation, makeCallback(createSMSController))
+app.post('/sendEmail', emailValidation, makeCallback(createEmailController))
 
 app.listen(port, () => {
     console.log(`Notifications service is listening on port ${port}`)
